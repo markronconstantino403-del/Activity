@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <Text style={styles.greeting}>Good Morning </Text>
-      <Text style={styles.name}>Hi, Markron </Text>
+      <Text style={styles.name}>Hi, Markron</Text>
 
       <TextInput
         style={styles.search}
@@ -47,13 +47,13 @@ export default function Index() {
       <Text style={styles.section}>Popular</Text>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>React Native Basic</Text>
+        <Text style={styles.cardTitle}>React Native Basics</Text>
         <Text>Beginner</Text>
       </View>
 
       <View style={styles.card}>
         <Text style={styles.cardTitle}>JavaScript Essentials</Text>
-        <Text>Intermediate</Text>
+        <Text> Intermediate</Text>
       </View>
 
       <View style={{ height: 30 }} />
