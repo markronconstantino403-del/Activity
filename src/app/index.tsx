@@ -1,98 +1,141 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+export default function Index() {
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <Text style={styles.greeting}>Good Morning </Text>
+      <Text style={styles.name}>Hi, Markron </Text>
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+      <TextInput
+        style={styles.search}
+        placeholder="Search..."
+      />
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
+      <Text style={styles.section}>Featured</Text>
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
+      <View style={styles.banner}>
+        <Text style={styles.bannerTitle}>Welcome!</Text>
+        <Text style={styles.bannerText}>
+          Build beautiful apps with React Native.
+        </Text>
+      </View>
 
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+      <Text style={styles.section}>Categories</Text>
+
+      <View style={styles.row}>
+        <TouchableOpacity style={styles.category}>
+          <Text>Mobile</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.category}>
+          <Text>Web</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.category}>
+          <Text>Design</Text>
+        </TouchableOpacity>
+      </View>
+
+      <Text style={styles.section}>Popular</Text>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>React Native Basics</Text>
+        <Text>Beginner</Text>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>JavaScript Essentials</Text>
+        <Text>Intermediate</Text>
+      </View>
+
+      <View style={{ height: 30 }} />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    backgroundColor: "#f4f6f8",
+    padding: 20,
   },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+
+  greeting: {
+    fontSize: 18,
+    color: "#666",
+    marginTop: 20,
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+
+  name: {
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 20,
   },
-  title: {
-    textAlign: 'center',
+
+  search: {
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 20,
   },
-  code: {
-    textTransform: 'uppercase',
+
+  section: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+    marginTop: 10,
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+
+  banner: {
+    backgroundColor: "#4A90E2",
+    padding: 20,
+    borderRadius: 15,
+    marginBottom: 20,
+  },
+
+  bannerTitle: {
+    color: "#fff",
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+
+  bannerText: {
+    color: "#fff",
+    marginTop: 5,
+  },
+
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+
+  category: {
+    backgroundColor: "#fff",
+    padding: 15,
+    borderRadius: 10,
+    width: "30%",
+    alignItems: "center",
+  },
+
+  card: {
+    backgroundColor: "#fff",
+    padding: 18,
+    borderRadius: 12,
+    marginBottom: 15,
+  },
+
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 5,
   },
 });
