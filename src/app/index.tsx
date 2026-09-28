@@ -52,7 +52,7 @@ export default function Index() {
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>JavaScript Essentials</Text>
+        <Text style={styles.cardTitle}>JavaScript Essential</Text>
         <Text>Intermediate</Text>
       </View>
 
