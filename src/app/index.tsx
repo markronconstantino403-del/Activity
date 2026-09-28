@@ -47,12 +47,12 @@ export default function Index() {
       <Text style={styles.section}>Popular</Text>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>React Native Basics</Text>
+        <Text style={styles.cardTitle}>React Native Basic</Text>
         <Text>Beginner</Text>
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>JavaScript Essential</Text>
+        <Text style={styles.cardTitle}>JavaScript Essentials</Text>
         <Text>Intermediate</Text>
       </View>
 
